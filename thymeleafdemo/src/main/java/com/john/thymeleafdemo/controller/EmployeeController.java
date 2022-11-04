@@ -2,6 +2,8 @@ package com.john.thymeleafdemo.controller;
 
 import com.john.thymeleafdemo.model.Employee;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.PostConstruct;
@@ -19,9 +21,9 @@ public class EmployeeController {
     public void loadData() {
 
         // create employees
-        Employee emp1 = new Employee(1,"John","Chen","john@gmail.com");
-        Employee emp2 = new Employee(2,"Mary","Lin","mary@gmail.com");
-        Employee emp3 = new Employee(3,"Jack","Wu","jack@gmail.com");
+        Employee emp1 = new Employee(1, "John", "Chen", "john@gmail.com");
+        Employee emp2 = new Employee(2, "Mary", "Lin", "mary@gmail.com");
+        Employee emp3 = new Employee(3, "Jack", "Wu", "jack@gmail.com");
 
         // create the list
         theEmployees = new ArrayList<>();
@@ -34,5 +36,14 @@ public class EmployeeController {
     }
 
     // add mapping for "list"
+    @GetMapping("/list")
+    public String listEmployees(Model theModel) {
+
+        // add to the spring model
+        theModel.addAttribute("employees", theEmployees);
+
+        return "list-employees";
+
+    }
 
 }
