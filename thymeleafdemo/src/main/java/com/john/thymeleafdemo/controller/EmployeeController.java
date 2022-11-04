@@ -1,6 +1,6 @@
 package com.john.thymeleafdemo.controller;
 
-import com.john.thymeleafdemo.model.Employee;
+import com.john.thymeleafdemo.entity.Employee;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
